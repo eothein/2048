@@ -69,4 +69,12 @@ public class Board extends GridLayout {
                 .getMetrics(displayMetrics);
         return Math.min(displayMetrics.widthPixels,displayMetrics.heightPixels) / grid.getGridSize();
     }
+
+    /**
+     * Returns the grid of elements
+     * @return the grid of elements
+     */
+    public Grid getGrid() {
+        return grid;
+    }
 }

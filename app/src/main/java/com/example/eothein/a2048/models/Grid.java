@@ -1,10 +1,12 @@
 package com.example.eothein.a2048.models;
 
+import com.example.eothein.a2048.interfaces.Slider;
+
 /**
  * Created by Jens Buysse & Karine Samyn on 26.09.17.
  */
 
-public class Grid {
+public class Grid implements Slider{
 
 
     /**
@@ -41,10 +43,18 @@ public class Grid {
         return grid[i][j];
     }
 
+    /**
+     * Returns the size of this grid
+     * @return the gridsize
+     */
     public int getGridSize() {
         return gridSize;
     }
 
+    /**
+     * Sets the gridsize for this gird
+     * @param gridSize the grid size
+     */
     public void setGridSize(int gridSize) {
         if(gridSize<4)
             throw new IllegalArgumentException("The grid size cannot be less than 4");
@@ -55,28 +65,28 @@ public class Grid {
     /**
      * Swipe right
      */
-    public void swipeRight(){
+    public void slideRight(){
         throw new UnsupportedOperationException("This operations is not yet supported");
     }
 
     /**
      * Swipe left
      */
-    public void swipeLeft(){
+    public void slideLeft(){
         throw new UnsupportedOperationException("This operations is not yet supported");
     }
 
     /**
      * Swipe up
      */
-    public void swipeUp(){
+    public void slideUp(){
         throw new UnsupportedOperationException("This operations is not yet supported");
     }
 
     /**
      * Swipe down
      */
-    public void switeDown(){
+    public void slideDown(){
         throw new UnsupportedOperationException("This operations is not yet supported");
     }
 }

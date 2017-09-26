@@ -20,6 +20,11 @@ public class Element {
         this.number = -1;
     }
 
+    /**
+     * Creates an element. The gridsize allows the number of the element to be between -1 and
+     * grid size
+     * @param gridSize the maximum number the element can contain
+     */
     public Element(int gridSize){
         Random r = new Random();
         boolean empty = r.nextBoolean();

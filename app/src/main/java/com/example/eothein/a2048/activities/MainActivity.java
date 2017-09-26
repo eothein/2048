@@ -3,6 +3,7 @@ package com.example.eothein.a2048.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.eothein.a2048.R;
+import com.example.eothein.a2048.utils.SwipeListener;
 
 /**
  *
@@ -21,10 +23,39 @@ import com.example.eothein.a2048.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Board theBoard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        theBoard = (Board)findViewById(R.id.board);
+
+
+        theBoard.setOnTouchListener(new SwipeListener(MainActivity.this) {
+            @Override
+            public void up(){
+                theBoard.getGrid().slideUp();
+            }
+
+            @Override
+            public void right() {
+                super.right();
+                theBoard.getGrid().slideRight();
+            }
+
+            @Override
+            public void left() {
+                theBoard.getGrid().slideLeft();
+            }
+
+            @Override
+            public void down() {
+                theBoard.getGrid().slideDown();
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -76,9 +107,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
