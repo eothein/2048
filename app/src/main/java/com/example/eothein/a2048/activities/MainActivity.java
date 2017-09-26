@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
             public void right() {
                 super.right();
                 theBoard.getGrid().slideRight();
+                theBoard.updateBoard();
             }
 
             @Override

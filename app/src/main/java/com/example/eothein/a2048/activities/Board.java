@@ -77,4 +77,12 @@ public class Board extends GridLayout {
     public Grid getGrid() {
         return grid;
     }
+
+
+    public void updateBoard(){
+        for(int i =0; i<getChildCount(); i++){
+            ElementView v = (ElementView)getChildAt(i);
+            v.updateElementView();
+        }
+    }
 }
