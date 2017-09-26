@@ -13,6 +13,11 @@ public class Element {
      */
     private int number = -1;
 
+
+    public Element() {
+        this.number = -1;
+    }
+
     /**
      * Returns the number of this element
      * @return the number of this element

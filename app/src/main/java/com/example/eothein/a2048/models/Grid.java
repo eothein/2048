@@ -31,6 +31,15 @@ public class Grid {
 
     }
 
+    /**
+     * Return the element of this grid
+     * @param i the row index
+     * @param j the column index
+     * @return the requested element
+     */
+    public Element getElement(int i, int j){
+        return grid[i][j];
+    }
 
     public int getGridSize() {
         return gridSize;
