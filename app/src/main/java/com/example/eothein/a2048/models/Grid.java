@@ -25,7 +25,7 @@ public class Grid {
         //Initialise the grid with new elements
         for(int i  = 0; i< gridSize; i++){
             for(int j = 0; j< gridSize; j++){
-                grid[i][j] = new Element();
+                grid[i][j] = new Element(getGridSize());
             }
         }
 

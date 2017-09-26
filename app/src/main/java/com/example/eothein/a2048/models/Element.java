@@ -1,5 +1,7 @@
 package com.example.eothein.a2048.models;
 
+import java.util.Random;
+
 /**
  * Created by Jens Buysse & Karine Samyn on 26.09.17.
  */
@@ -16,6 +18,17 @@ public class Element {
 
     public Element() {
         this.number = -1;
+    }
+
+    public Element(int gridSize){
+        Random r = new Random();
+        boolean empty = r.nextBoolean();
+        if(empty){
+            this.number = -1;
+        }else{
+            this.number = r.nextInt(gridSize);
+        }
+
     }
 
     /**

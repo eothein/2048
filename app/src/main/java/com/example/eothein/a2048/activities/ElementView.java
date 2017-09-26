@@ -1,10 +1,12 @@
 package com.example.eothein.a2048.activities;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,12 +44,48 @@ public class ElementView extends FrameLayout {
 
     private void initElementView(Element element){
         this.element =element;
-
         LayoutInflater layoutInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutInflater.inflate(R.layout.element, this, true);
-
         textView = (TextView)findViewById(R.id.number);
-        textView.setText(Integer.toString(element.getNumber()));
+        updateElementView();
+    }
+
+
+    public void updateElementView(){
+        if(element.getNumber() > 0) {
+            textView.setText(Integer.toString(element.getNumber()));
+        }else{
+            textView.setText("");
+        }
+
+        textView.setTextColor(ContextCompat.getColor(getContext(),
+                element.getNumber() <= 4
+                        ? R.color.cardColorDark
+                        : R.color.cardColorLight
+        ));
+
+        // Set background color based on the current value of the number
+        //TODO: how to change background color while maintaining the frame around the FrameLayout
+        //textView.setBackgroundColor(this.getBackgroundColor());
+
+    }
+
+    public int getBackgroundColor() {
+        switch (element.getNumber()) {
+            case 2: return Color.parseColor("#EEE4DA");
+            case 4: return Color.parseColor("#EDE0C8");
+            case 8: return Color.parseColor("#F2B179");
+            case 16: return Color.parseColor("#F59563");
+            case 32: return Color.parseColor("#F67C5F");
+            case 64: return Color.parseColor("#F65E3B");
+            case 128: return Color.parseColor("#EDCF72");
+            case 256: return Color.parseColor("#EDCC61");
+            case 512: return Color.parseColor("#EDC850");
+            case 1024: return Color.parseColor("#EDC53F");
+            case 2048: return Color.parseColor("#EDC22E");
+        }
+
+        return Color.parseColor("#CDC1B4");
     }
 
 
