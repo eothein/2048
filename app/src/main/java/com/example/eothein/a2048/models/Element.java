@@ -1,5 +1,7 @@
 package com.example.eothein.a2048.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -50,5 +52,9 @@ public class Element {
      */
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public boolean isEmpty(){
+        return this.number == -1;
     }
 }

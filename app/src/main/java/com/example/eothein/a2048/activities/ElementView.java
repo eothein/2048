@@ -47,6 +47,7 @@ public class ElementView extends FrameLayout {
         LayoutInflater layoutInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutInflater.inflate(R.layout.element, this, true);
         textView = (TextView)findViewById(R.id.number);
+
         updateElementView();
     }
 

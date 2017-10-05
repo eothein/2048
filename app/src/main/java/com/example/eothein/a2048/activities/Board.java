@@ -2,9 +2,11 @@ package com.example.eothein.a2048.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridLayout;
@@ -39,7 +41,7 @@ public class Board extends GridLayout {
     }
 
     private void initBoard(Context context){
-        grid = new Grid(4);
+        grid = Grid.get(4);//new Grid(4);
 
         this.setRowCount(grid.getGridSize());
         this.setColumnCount(grid.getGridSize());
@@ -67,7 +69,15 @@ public class Board extends GridLayout {
         ((Activity) getContext()).getWindowManager()
                 .getDefaultDisplay()
                 .getMetrics(displayMetrics);
-        return Math.min(displayMetrics.widthPixels,displayMetrics.heightPixels) / grid.getGridSize();
+        int actbarh=getActionBarHeight();
+        return Math.min(displayMetrics.widthPixels,displayMetrics.heightPixels - actbarh) / grid.getGridSize();
+    }
+
+    public int getActionBarHeight() {
+        final TypedArray ta = getContext().getTheme().obtainStyledAttributes(
+                new int[] {android.R.attr.actionBarSize});
+        int actionBarHeight = (int) ta.getDimension(0, 0);
+        return actionBarHeight;
     }
 
     /**

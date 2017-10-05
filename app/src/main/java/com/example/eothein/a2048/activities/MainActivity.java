@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         theBoard = (Board)findViewById(R.id.board);
 
 
+
         theBoard.setOnTouchListener(new SwipeListener(MainActivity.this) {
             @Override
             public void up(){
