@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Jens Buysse & Karine Samyn on 26.09.17.
  */
 
-public class Grid implements Slider {
+public class Grid {
 
     private static Grid gridInstance;
     /**
