@@ -11,6 +11,10 @@ import java.util.List;
 
 public class Grid {
 
+
+    /**
+     * Using the Singleton pattern.
+     */
     private static Grid gridInstance;
     /**
      * The size of the grid
@@ -22,11 +26,6 @@ public class Grid {
      */
     private Element[][] grid;
 
-    public static Grid get(int gridSize){
-        if (gridInstance == null)
-            gridInstance = new Grid(gridSize);
-        return gridInstance;
-    }
     private Grid(int gridSize) {
         setGridSize(gridSize);
         grid = new Element[gridSize][gridSize];
@@ -42,6 +41,12 @@ public class Grid {
 
     }
 
+    public static Grid get(int gridSize) {
+        if (gridInstance == null)
+            gridInstance = new Grid(gridSize);
+        return gridInstance;
+    }
+
     /**
      * Return the element of this grid
      *
@@ -51,6 +56,19 @@ public class Grid {
      */
     public Element getElement(int i, int j) {
         return grid[i][j];
+    }
+
+
+    /**
+     * Set the number for a certain tile
+     *
+     * @param number the number to set
+     * @param i      the row index
+     * @param j      the column index
+     */
+    public void setElementNumber(int number, int i, int j) {
+        Element e = getElement(i, j);
+        e.setNumber(number);
     }
 
     /**
@@ -150,5 +168,26 @@ public class Grid {
         }
 
         return list;
+    }
+
+    /**
+     * Prints the board for testing purposes
+     */
+    public void printBoard() {
+        for (int i = 0; i < this.gridSize; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        for (int i = 0; i < this.gridSize; i++) {
+            for (int j = 0; j < this.gridSize; j++) {
+                System.out.print(grid[i][j]);
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+        for (int i = 0; i < this.gridSize; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }

@@ -57,4 +57,15 @@ public class Element {
     public boolean isEmpty(){
         return this.number == -1;
     }
+
+    @Override
+    public String toString() {
+        if (number == -1) {
+            return "" + 0;
+        } else {
+            return "" +
+                    number
+                    ;
+        }
+    }
 }
